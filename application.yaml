@@ -8,7 +8,7 @@ spec:
   source:
     repoURL: https://github.com/sgauravk/learning-argocd.git
     targetRevision: HEAD
-    path: deployment.yaml
+    path: k9s_templates
   destination:
     server: https://kubernetes.default.svc
     namespace: myns
