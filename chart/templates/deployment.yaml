@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name | default "github-gists" }}
+  namespace: {{ .Values.namespace | default "default" }}
+  labels:
+    app: {{ .Release.Name | default "github-gists" }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: {{ .Release.Name }}-github-gists
+  template:
+    metadata:
+      labels:
+        app: {{ .Release.Name }}-github-gists
+    spec:
+      containers:
+        - name: github-gists
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          ports:
+            - containerPort: {{ .Values.container.port }}
+              protocol: TCP
+          resources:
+            requests:
+              cpu: {{ .Values.container.resources.requests.cpu }}
+              memory: {{ .Values.container.resources.requests.memory }}
+            limits:
+              cpu: {{ .Values.container.resources.limits.cpu }}
+              memory: {{ .Values.container.resources.limits.memory }}

@@ -1,0 +1,10 @@
+# Python cache files
+__pycache__
+.pytest_cache
+
+# Docker files
+Dockerfile
+docker-compose.yaml
+
+# markdown files
+*.md
