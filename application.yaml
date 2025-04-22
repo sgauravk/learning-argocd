@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: github-gists
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/sgauravk/learning-argocd.git
+    targetRevision: HEAD
+    path: deployment.yaml
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: myns
+  syncPolicy:
+    automated:
+      selfHeal: true
+      prune: true
