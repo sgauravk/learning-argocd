@@ -6,7 +6,7 @@ metadata:
   labels:
     app: github-gists
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       app: github-gists
